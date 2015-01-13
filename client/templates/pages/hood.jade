@@ -14,6 +14,6 @@ template(name='hood')
             input#add-tagline(type='text', placeholder='Add a tagline...')
           ul.taglines
             each taglines
-              li.tagline: span= text
+              +tagline
         else
           h3 No neighborhood selected.
