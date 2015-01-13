@@ -26,6 +26,14 @@ var Helpers = {
     return process && process.env.NODE_ENV === 'production';
   },
 
+  // currentNeighborhood: function() {
+  //   return Session.get('currentNeighborhood');
+  // },
+
+  hasCurrentNeighborhood: function() {
+    return Session.get('currentNeighborhood') !== null;
+  }
+
 };
 
 // Register all template helpers.

@@ -4,10 +4,16 @@ template(name='hood')
 
       //- SF map will go here
       section#hoods
-        h2 THat raphael map should go here
         #sf-map-container
 
       section#taglines
-        .input-group
-          label(for='add-tagline') Add a tagline...
-          input#add-tagline(type='text', placeholder='Add a tagline...')
+        if hasCurrentNeighborhood
+          h3= currentNeighborhood.name
+          .input-group
+            label(for='add-tagline') Add a tagline...
+            input#add-tagline(type='text', placeholder='Add a tagline...')
+          ul.taglines
+            each taglines
+              li.tagline: span= text
+        else
+          h3 No neighborhood selected.

@@ -1,3 +1,46 @@
+Template.hood.helpers({
+
+  taglines: function() {
+    return Taglines.find({ hoodId: Session.get('currentNeighborhood') });
+  },
+
+  currentNeighborhood: function() {
+    return Neighborhoods.findOne(Session.get('currentNeighborhood'));
+  }
+
+});
+
+Template.hood.events({
+
+  'click a': function(e, template) {
+    e.preventDefault();
+    Session.set('currentNeighborhood', $(e.currentTarget).attr('href'));
+  },
+
+
+  'keydown #add-tagline': function(e, template) {
+
+    var input   = e.currentTarget,
+        tagline = input.value.trim();
+
+    // Normall key presses should not do anything unless its the enter key and
+    // there's a value in the field
+    if (e.which !== Utils.ENTER_KEY || !tagline) return;
+
+    e.preventDefault();
+
+    // Remember we need to get the current neighborhood here since session will
+    // be undefined on the server.
+    Meteor.call('insertTagline', {
+      text: tagline,
+      hoodId: Session.get('currentNeighborhood')
+    });
+
+    input.value = '';
+  }
+
+});
+
 Template.hood.rendered = function() {
   var paper = Raphael("sf-map-container", 680, 580);
 
@@ -17,20 +60,14 @@ Template.hood.rendered = function() {
     "text-anchor": "start"
   };
 
-  Neighborhoods.find().forEach(function(hood) {
-    console.log('hey we made it');
-    console.log(hood);
-    drawNeighborhood(hood.path, hood.nameX, hood.nameY, hood.name, hood.slug);
-  });
-
-  function drawNeighborhood(_path, _nameX, _nameY, _name, _slug) {
-    var path = paper.path(_path).attr(shapeAttr),
-      name   = paper.text(_nameX, _nameY, _name).attr(nameAttr),
-      url    = _slug,
-      set    = paper.set();
+  function drawNeighborhood(hood) {
+    var path = paper.path(hood.path).attr(shapeAttr),
+        name = paper.text(hood.nameX, hood.nameY, hood.name).attr(nameAttr),
+        url  = hood.slug,
+        set  = paper.set();
 
     set.push(path, name);
-    set.attr({ "href": url });
+    set.attr({ "href": hood._id });
 
     set.mouseover(function (event) {
       this.attr({ "cursor": "pointer" });
@@ -40,6 +77,13 @@ Template.hood.rendered = function() {
       path.animate({ fill: "#69D2E7" }, 400);
     });
   }
+
+  /**
+   * Add all the neighborhoods to the svg
+   */
+  Neighborhoods.find().forEach(function(hood) {
+    drawNeighborhood(hood);
+  });
 
 };
 

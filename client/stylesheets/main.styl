@@ -120,15 +120,19 @@ maroon = #7A1E48
   margin 0 auto
   max-width 1000px
 
+#hoods
+#taglines
+  margin-top 50px
 
 #hoods
   float left
   width 70%
+  border-right 1px solid maroon
 
 #taglines
-  background blue
   float right
   width 30%
+  padding-left 20px
 
 input
   outline none
@@ -137,9 +141,38 @@ input
   font-size 18px
 
 .input-group
-  padding 20px
   input
     width 100%
     padding 10px
+    border 3px solid lighten(maroon, 20%)
+    &:focus
+      border-color maroon
 
 // }}} END Main
+
+// Taglines {{{
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+.tagline
+  font-size 22px
+  line-height 1.5
+  display block
+  padding 10px
+  span
+    position relative
+    &:before
+    &:after
+      content '“'
+      position absolute
+      left -10px
+      color red
+      top -5px
+
+    &:after
+      content '”'
+      left auto
+      top auto
+      right -10px
+      bottom 0
+
+// }}} END Taglines
