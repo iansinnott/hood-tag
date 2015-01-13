@@ -1,9 +1,15 @@
 Template.hood.helpers({
 
+  /**
+   * Get all taglines for the currently selected neighborhood, sorted by rank.
+   */
   taglines: function() {
-    return Taglines.find({ hoodId: Session.get('currentNeighborhood') });
+    return Taglines.find({ hoodId: Session.get('currentNeighborhood') }, { sort: { rank: -1 }});
   },
 
+  /**
+   * Return the current neighborhoods ID
+   */
   currentNeighborhood: function() {
     return Neighborhoods.findOne(Session.get('currentNeighborhood'));
   }
@@ -16,7 +22,6 @@ Template.hood.events({
     e.preventDefault();
     Session.set('currentNeighborhood', $(e.currentTarget).attr('href'));
   },
-
 
   'keydown #add-tagline': function(e, template) {
 
@@ -73,6 +78,7 @@ Template.hood.rendered = function() {
       this.attr({ "cursor": "pointer" });
       path.animate({ fill: "#F38630" }, 400);
     });
+
     set.mouseout(function (event) {
       path.animate({ fill: "#69D2E7" }, 400);
     });

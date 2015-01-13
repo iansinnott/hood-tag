@@ -153,11 +153,36 @@ input
 // Taglines {{{
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
+button
+  display block
+  outline none
+  border none
+  background transparent
+  padding 0
+  cursor pointer
+  &:hover
+    color red
+
+.tagline.hover
+.tagline.voted
+  .vote
+    display block
+
 .tagline
+  position relative
   font-size 22px
   line-height 1.5
   display block
   padding 10px
+  margin-left -20px
+  padding-left 30px
+  .vote
+    position absolute
+    left 5px
+    display none
+  i
+    font-size 15px
+    line-height 1
   span
     position relative
     &:before
