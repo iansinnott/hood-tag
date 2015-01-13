@@ -1,20 +1,14 @@
-template(name='appLayout')
+template(name='layout')
 
   //- Necessary for sticky footer
   #page-wrap
     header#header
       .container
-        .logo-small.left
-          a(href='/notes/me')
-            | Note
-            span.code Down
-        nav.right.login-out
-          +loginButton
-        +yield('header')
+        h2 This is a header
     section#main-wrapper
       +yield
 
   //- Sticky footer
   footer#footer.sticky
     .container
-      +footer
+      h2 Hey bro, nice footer

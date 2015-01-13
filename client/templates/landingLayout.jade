@@ -1,11 +1,14 @@
 template(name='landingLayout')
-  header#header.landing
-    .container
-      nav.right
-        +loginButton
-  section#main-wrapper
-    +yield
-  footer#footer
-    .container
-      +footer
 
+  //- Necessary for sticky footer
+  #page-wrap
+    header#header
+      .container
+        h2 This is a header
+    section#main-wrapper
+      +yield
+
+  //- Sticky footer
+  footer#footer.sticky
+    .container
+      h2 Hey bro, nice footer
