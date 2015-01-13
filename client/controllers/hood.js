@@ -3,7 +3,7 @@ Template.hood.rendered = function() {
 
   var shapeAttr = {
     "fill": "#69D2E7",
-    "stroke": "#111625",
+    "stroke": "#A7DBD8",
     "stroke-width": "0.6",
     "stroke-linejoin": "round"
   };
