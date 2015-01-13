@@ -14,7 +14,6 @@ Template.hood.events({
 
   'click a': function(e, template) {
     e.preventDefault();
-    console.log(template);
     Session.set('currentNeighborhood', $(e.currentTarget).attr('href'));
   },
 
@@ -29,8 +28,6 @@ Template.hood.events({
     if (e.which !== Utils.ENTER_KEY || !tagline) return;
 
     e.preventDefault();
-
-    console.log('You just added the tagline: ' + tagline);
 
     // Remember we need to get the current neighborhood here since session will
     // be undefined on the server.
