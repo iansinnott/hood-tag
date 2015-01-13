@@ -11,11 +11,37 @@ Template.hood.helpers({
 });
 
 Template.hood.events({
+
   'click a': function(e, template) {
     e.preventDefault();
     console.log(template);
     Session.set('currentNeighborhood', $(e.currentTarget).attr('href'));
+  },
+
+
+  'keydown #add-tagline': function(e, template) {
+
+    var input   = e.currentTarget,
+        tagline = input.value.trim();
+
+    // Normall key presses should not do anything unless its the enter key and
+    // there's a value in the field
+    if (e.which !== Utils.ENTER_KEY || !tagline) return;
+
+    e.preventDefault();
+
+    console.log('You just added the tagline: ' + tagline);
+
+    // Remember we need to get the current neighborhood here since session will
+    // be undefined on the server.
+    Meteor.call('insertTagline', {
+      text: tagline,
+      hoodId: Session.get('currentNeighborhood')
+    });
+
+    input.value = '';
   }
+
 });
 
 Template.hood.rendered = function() {
@@ -37,10 +63,6 @@ Template.hood.rendered = function() {
     "text-anchor": "start"
   };
 
-  Neighborhoods.find().forEach(function(hood) {
-    drawNeighborhood(hood);
-  });
-
   function drawNeighborhood(hood) {
     var path = paper.path(hood.path).attr(shapeAttr),
         name = paper.text(hood.nameX, hood.nameY, hood.name).attr(nameAttr),
@@ -58,6 +80,13 @@ Template.hood.rendered = function() {
       path.animate({ fill: "#7A1E48" }, 400);
     });
   }
+
+  /**
+   * Add all the neighborhoods to the svg
+   */
+  Neighborhoods.find().forEach(function(hood) {
+    drawNeighborhood(hood);
+  });
 
 };
 

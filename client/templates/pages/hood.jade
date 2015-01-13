@@ -12,5 +12,8 @@ template(name='hood')
           .input-group
             label(for='add-tagline') Add a tagline...
             input#add-tagline(type='text', placeholder='Add a tagline...')
+          ul.taglines
+            each taglines
+              li.tagline= text
         else
           h3 No neighborhood selected.
