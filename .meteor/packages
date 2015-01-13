@@ -1,0 +1,21 @@
+# Meteor packages used by this project, one per line.
+#
+# 'meteor add' and 'meteor remove' will edit this file for you,
+# but you can also edit it by hand.
+
+meteor-platform
+cryptoquick:stylus-multi
+mquandalle:jade
+iron:router
+accounts-ui
+accounts-password
+pfafman:font-awesome-4
+mrt:moment
+natestrauser:select2
+chuangbo:marked
+sacha:spin
+copleykj:jquery-autosize
+matb33:collection-hooks
+email
+ground:db
+

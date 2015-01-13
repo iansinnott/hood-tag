@@ -1,0 +1,4 @@
+.meteor/local/
+*.DS_Store
+_assets/
+*.tar.gz

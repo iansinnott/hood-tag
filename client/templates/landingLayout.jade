@@ -1,0 +1,11 @@
+template(name='landingLayout')
+  header#header.landing
+    .container
+      nav.right
+        +loginButton
+  section#main-wrapper
+    +yield
+  footer#footer
+    .container
+      +footer
+

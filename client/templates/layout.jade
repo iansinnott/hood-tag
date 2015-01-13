@@ -1,0 +1,20 @@
+template(name='appLayout')
+
+  //- Necessary for sticky footer
+  #page-wrap
+    header#header
+      .container
+        .logo-small.left
+          a(href='/notes/me')
+            | Note
+            span.code Down
+        nav.right.login-out
+          +loginButton
+        +yield('header')
+    section#main-wrapper
+      +yield
+
+  //- Sticky footer
+  footer#footer.sticky
+    .container
+      +footer

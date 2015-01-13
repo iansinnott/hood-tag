@@ -1,0 +1,98 @@
+// Note: Code sections in this file are meant for folding, specifically with
+// Vim. If you're not using Vim it's likely that thre brackets seem a bit much,
+// but beleive me, it works great in Vim.
+
+// Reset
+global-reset()
+
+// Bring in the Jeet!
+@require 'jeet'
+
+// Variables {{{
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+$font = 'Helvetica Neue', Helvetica, Arial, sans-serif
+code-font = "Courier New", "Menlo", monospace
+
+// Colors
+gray = #EEEEEE
+light-gray = #dadada
+
+// }}} END Variables
+
+// General {{{
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+*
+  box-sizing border-box
+html
+body
+  height 100%
+body
+  font-family $font
+
+.slide-down
+  display none
+
+.alert
+  color white
+  padding 10px
+  border-radius 3px
+.alert-success
+  background green
+  border 1px solid darken(green, 10%)
+  color lighten(green, 80%)
+.alert-error
+  background red
+  border 1px solid darken(red, 10%)
+  color lighten(red, 80%)
+
+.container
+  max-width 800px
+  margin 0 auto
+
+nav
+  li
+    display inline-block
+    &:first-child
+      a
+        padding-left 0
+    &:last-child
+      a
+        margin-right 0
+  a
+    display block
+    padding-right 10px
+    padding-left 10px
+
+a
+  color blue
+  &:hover
+    text-decoration underline
+
+h1
+h2
+h3
+p
+  color black
+  margin-bottom 20px
+  &.center
+    text-align center
+
+h1
+  font-size 48px
+  font-weight 500
+h2
+  font-size 28px
+  font-weight 500
+h3
+  font-size 24px
+p
+  font-size 18px
+  line-height 1.4
+
+.code
+  font-family code-font
+
+// }}} END General
+
