@@ -142,6 +142,16 @@ pondwater = #A7DBD8
   width 30%
   padding-left 20px
 
+// Very Strange: Adding this height fixation and overflow causes the following bug:
+// If a neighborhood has 11 or more taglines (N11):
+//   a. Switching from N11 to another N11 is fine;
+//   b. Switching from N11 to N1-N10 and the name of the neighborhood disappears
+//      along with the text box, but the taglines remain;
+//   c. Switching from N11 to N0 and the neighborhood name and text box disappear. 
+//#taglines
+//  height 650px
+//  overflow auto
+
 input
   outline none
   border none
