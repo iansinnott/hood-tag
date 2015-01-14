@@ -50,8 +50,8 @@ Template.hood.rendered = function() {
   var paper = Raphael("sf-map-container", 680, 580);
 
   var shapeAttr = {
-    "fill": "#7A1E48",
-    "stroke": "#111625",
+    "fill": "#69D2E7",
+    "stroke": "#A7DBD8",
     "stroke-width": "0.6",
     "stroke-linejoin": "round"
   };
@@ -76,11 +76,11 @@ Template.hood.rendered = function() {
 
     set.mouseover(function (event) {
       this.attr({ "cursor": "pointer" });
-      path.animate({ fill: "#341931" }, 400);
+      path.animate({ fill: "#F38630" }, 400);
     });
 
     set.mouseout(function (event) {
-      path.animate({ fill: "#7A1E48" }, 400);
+      path.animate({ fill: "#69D2E7" }, 400);
     });
   }
 
