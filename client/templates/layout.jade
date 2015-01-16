@@ -3,8 +3,10 @@ template(name='layout')
   //- Necessary for sticky footer
   #page-wrap
     header#header
+      +loginButtons
       .container
-        h2 HoodTag
+        img#logo(src='HoodTag.svg')
+        img(src='apptagline.svg')
     section#main-wrapper
       +yield
 

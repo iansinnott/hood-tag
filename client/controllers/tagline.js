@@ -1,7 +1,7 @@
 Template.tagline.events({
 
   'click .up': function(e, template) {
-    console.log('You upvoded this');
+    console.log('You upvoted this');
     Meteor.call('vote', template.data, 1);
   },
 
